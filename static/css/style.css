@@ -1,0 +1,41 @@
+/* static/css/style.css */
+:root{
+  --forest: #327039;
+  --wheat: #F0BE49;
+  --tilled: #133020;
+  --cherry: #DD5C36;
+  --alabaster: #F8EDD9;
+  --card-radius: 12px;
+  --page-padding: 18px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+body{
+  margin:0;
+  background: linear-gradient(180deg, var(--alabaster) 0%, #ffffff 100%);
+  color: var(--tilled);
+  padding: var(--page-padding);
+}
+
+.site-header{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:14px;
+}
+.site-header h1{font-size:20px; color:var(--forest); margin:0;}
+.btn{background:var(--forest); color:white; padding:8px 12px; border-radius:8px; text-decoration:none; border:none; cursor:pointer;}
+
+.container{display:flex; gap:18px;}
+.left{flex:1}
+.right{width:520px}
+
+.card{
+  background:white; border-radius:var(--card-radius); padding:12px; box-shadow:0 6px 18px rgba(19,48,32,0.06); margin-top:12px;
+}
+
+.cards{display:flex; gap:12px; margin-top:12px;}
+.card h3{margin:0 0 8px 0; color:var(--forest);}
+
+.login-wrap{max-width:420px;margin:40px auto;background:white;padding:18px;border-radius:12px;}
+.login-wrap input{width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:1px solid #ddd;}
+.admin .container{flex-direction:column;}
+.error{color:var(--cherry)}

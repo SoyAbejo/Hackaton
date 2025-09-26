@@ -1,0 +1,29 @@
+<!-- templates/login.html -->
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login - Cuidado Inteligente</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="login-wrap">
+        <h2>Ingreso administradores</h2>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            <label>Usuario</label>
+            <input name="username" required>
+            <label>Contraseña</label>
+            <input type="password" name="password" required>
+            <button class="btn" type="submit">Entrar</button>
+        </form>
+        <p>Credencial demo: <strong>admin / admin123</strong></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!-- templates/admin.html -->
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin - Cuidado Inteligente</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>Panel gestor</h1>
+        <nav><a href="/logout" class="btn">Salir</a></nav>
+    </header>
+    <main class="container admin">
+        <section>
+            <h3>Crear servicio</h3>
+            <form id="service-form">
+                <input name="name" placeholder="Nombre" required>
+                <input name="type" placeholder="tipo (hospital/puesto/brigada)" required>
+                <input name="lat" placeholder="lat" required>
+                <input name="lon" placeholder="lon" required>
+                <input name="capacity" placeholder="capacidad" type="number">
+                <button class="btn" type="submit">Guardar servicio</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Crear jornada</h3>
+            <form id="jornada-form">
+                <input name="title" placeholder="Título" required>
+                <input name="date" placeholder="YYYY-MM-DD" required>
+                <input name="service_id" placeholder="Service ID" required>
+                <input name="expected_attendees" placeholder="Asistentes esperados" type="number">
+                <input name="resources" placeholder="Recursos">
+                <button class="btn" type="submit">Guardar jornada</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // POST simples a endpoints admin
+        document.getElementById('service-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            const res = await fetch('/api/admin/service', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+            const j = await res.json();
+            if (j.ok) alert('Servicio creado: ID ' + j.id);
+        };
+        document.getElementById('jornada-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target));
+            const res = await fetch('/api/admin/jornada', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+            const j = await res.json();
+            if (j.ok) alert('Jornada creada: ID ' + j.id);
+        };
+    </script>
+</body>
+
+</html>
